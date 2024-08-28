@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:appcontabancaria/models/conta_bancaria.dart';
+import 'package:appcontabancaria/models/conta_corrente.dart';
+import 'package:appcontabancaria/models/conta_poupanca.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ContaBancaria<ContaCorrente> contaCorrente = ContaBancaria(
+      tipoDeConta: ContaCorrente('12345-6'),
+      saldo: 1000.0,
+    );
+
+    final ContaBancaria<ContaPoupanca> contaPoupanca = ContaBancaria(
+      tipoDeConta: ContaPoupanca('65432-1'),
+      saldo: 5000.0,
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Conta Bancária'),
+        title: const Text('Aplicação Bancária Genérica'),
       ),
-      body: ListView(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
-        children: const <Widget>[
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.account_balance_wallet),
-              title: Text('Conta Corrente'),
-              subtitle: Text('Saldo disponível: R\$ 1.000,00'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.savings),
-              title: Text('Conta Poupança'),
-              subtitle: Text('Saldo disponível: R\$ 5.000,00'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.credit_card),
-              title: Text('Cartão de Crédito'),
-              subtitle: Text('Fatura: R\$ 200,00'),
-            ),
-          ),
-        ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(contaCorrente.toString()),
+            const SizedBox(height: 10),
+            Text(contaPoupanca.toString()),
+          ],
+        ),
       ),
     );
   }
