@@ -1,7 +1,7 @@
 import 'package:appcontabancaria/views/home.dart';
 import 'package:flutter/material.dart';
 
-class AppContaBancaria extends StatelessWidget{
+class AppContaBancaria extends StatelessWidget {
   const AppContaBancaria({super.key});
 
   @override
@@ -9,7 +9,9 @@ class AppContaBancaria extends StatelessWidget{
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue.shade600,),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightBlue.shade600,
+        ),
       ),
       home: const Home(),
     );
